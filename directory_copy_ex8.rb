@@ -4,7 +4,7 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
+  name = gets.gsub("\n",'')
   #while the name is not empty,  repeat this code
   while !name.empty? do
     #ask for cohort
@@ -12,8 +12,8 @@ def input_students
     #get the cohort
     cohort = gets.chomp.to_sym
     #check chohort
-    if cohort == ""
-      cohort = :november
+    if cohort.empty?
+      cohort = :september
     end
     #add students hash to the array
     students << {name: name, cohort: cohort, hobbies: :cycling, country: :UK, height: :"181" }
@@ -72,7 +72,7 @@ def print_with_map_cohort(students)
 end
 
 def print_students_divided_by_cohort(students)
-  cohort_array = students.map {|student| student[:cohort]}.uniq
+  students.map {|student| student[:cohort]}.uniq
   .each { |cohort|
     puts "Students from #{cohort} cohort: "
     for student in students
@@ -89,7 +89,7 @@ end
 students = input_students
 print_header
 # print_with_while(students)
-# print(students)
+print(students)
 print_students_divided_by_cohort(students)
 # puts "Students whose name starts with letter D"
 # print_students_begings_with_letter_D(students)
