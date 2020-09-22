@@ -10,7 +10,7 @@ def input_students
     #ask for cohort
     puts "Please enter the cohort of the student"
     #get the cohort
-    cohort = gets.chomp
+    cohort = gets.chomp.to_sym
     #check chohort
     if cohort == ""
       cohort = :november
@@ -62,6 +62,18 @@ def print_with_while(students)
   end
 end
 
+def print_with_map_cohort(students)
+  student_number = 1
+  students.map {|student| student[:cohort] == :may }.each do |student|
+    puts "#{student_number}. #{student[:name]} (#{student[:cohort]} cohort)"
+    student_number += 1
+  end
+end
+
+def print_one_cohort(students)
+   students.select {|student| student[:cohort] == :may}.each_with_index {|student, index| puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"}
+end
+
 def print_footer(students)
   puts "Now we have #{students.count}" + "#{students.count == 1 ? " student" : " students"}"
 end
@@ -74,3 +86,4 @@ print_students_begings_with_letter_D(students)
 puts "Students whose name is shorter then 12 charakters"
 print_students_with_short_name(students)
 print(students)
+print_one_cohort(students)
