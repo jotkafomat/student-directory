@@ -17,7 +17,7 @@ def input_students
     end
     #add students hash to the array
     students << {name: name, cohort: cohort, hobbies: :cycling, country: :UK, height: :"181" }
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count}" + "#{students.count == 1 ? " student" : " students"}"
     # get another name from the user
     name = gets.chomp
   end
@@ -63,7 +63,7 @@ def print_with_while(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "Now we have #{students.count}" + "#{students.count == 1 ? " student" : " students"}"
 end
 students = input_students
 print_header
