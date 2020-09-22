@@ -71,8 +71,16 @@ def print_with_map_cohort(students)
   end
 end
 
-def print_one_cohort(students)
-   students.select {|student| student[:cohort] == :may}.each_with_index {|student, index| puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"}
+def print_students_divided_by_cohort(students)
+  cohort_array = students.map {|student| student[:cohort]}.uniq
+  .each { |cohort|
+    puts "Students from #{cohort} cohort: "
+    for student in students
+      if student[:cohort] == cohort
+        puts student[:name]
+      end
+    end
+  }
 end
 
 def print_footer(students)
@@ -81,10 +89,11 @@ end
 students = input_students
 print_header
 # print_with_while(students)
-print(students)
-print_footer(students)
+# print(students)
+print_students_divided_by_cohort(students)
 # puts "Students whose name starts with letter D"
 # print_students_begings_with_letter_D(students)
 # puts "Students whose name is shorter then 12 charakters"
 # print_students_with_short_name(students)
 # print_one_cohort(students)
+print_footer(students)
