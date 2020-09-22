@@ -36,6 +36,14 @@ def print_students_begings_with_letter_D(students)
   end
 end
 
+def print_students_with_short_name(students)
+  students.each_with_index do |student, index|
+      if student[:name].length < 12
+        puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+      end
+  end
+end
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
@@ -43,5 +51,7 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-puts "Students that's names starts with letter D"
+puts "Students whose name starts with letter D"
 print_students_begings_with_letter_D(students)
+puts "Students whose name is shorter then 12 charakters"
+print_students_with_short_name(students)
