@@ -31,6 +31,7 @@ def print_header
 end
 
 def print(students)
+  return if students.empty?
   students.each_with_index do |student, index|
     puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort, #{student[:hobbies]} hobby, from #{student[:country]}, #{student[:height]} cm )".center(100)
   end
@@ -79,11 +80,11 @@ def print_footer(students)
 end
 students = input_students
 print_header
-print_with_while(students)
-print_footer(students)
-puts "Students whose name starts with letter D"
-print_students_begings_with_letter_D(students)
-puts "Students whose name is shorter then 12 charakters"
-print_students_with_short_name(students)
+# print_with_while(students)
 print(students)
-print_one_cohort(students)
+print_footer(students)
+# puts "Students whose name starts with letter D"
+# print_students_begings_with_letter_D(students)
+# puts "Students whose name is shorter then 12 charakters"
+# print_students_with_short_name(students)
+# print_one_cohort(students)
