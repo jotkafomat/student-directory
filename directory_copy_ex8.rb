@@ -44,12 +44,22 @@ def print_students_with_short_name(students)
   end
 end
 
+def print_with_while(students)
+  student_number = 1
+  student_index = 0
+  while students.length > student_index
+    puts "#{student_number}. #{students[student_index][:name]} (#{students[student_index][:cohort]} cohort)"
+    student_number += 1
+    student_index += 1
+  end
+end
+
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 students = input_students
 print_header
-print(students)
+print_with_while(students)
 print_footer(students)
 puts "Students whose name starts with letter D"
 print_students_begings_with_letter_D(students)
