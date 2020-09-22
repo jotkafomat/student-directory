@@ -8,7 +8,7 @@ def input_students
   #while the name is not empty,  repeat this code
   while !name.empty? do
     #add students hash to the array
-    students << {name: name, cohort: :novemer}
+    students << {name: name, cohort: :november, hobbies: :cycling, country: :UK, height: :"181" }
     puts "Now we have #{students.count} students"
     # get another name from the user
     name = gets.chomp
@@ -24,7 +24,7 @@ end
 
 def print(students)
   students.each_with_index do |student, index|
-    puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    puts " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort, #{student[:hobbies]} hobby, from #{student[:country]}, #{student[:height]} cm )"
   end
 end
 
@@ -65,3 +65,4 @@ puts "Students whose name starts with letter D"
 print_students_begings_with_letter_D(students)
 puts "Students whose name is shorter then 12 charakters"
 print_students_with_short_name(students)
+print(students)
