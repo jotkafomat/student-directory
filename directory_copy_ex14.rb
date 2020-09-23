@@ -112,12 +112,12 @@ def load_students(filename = "students.csv")
   if filename == ""
     filename = "students.csv"
   end
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-  name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
+  file = File.open(filename, "r") do |file|
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(",")
+        @students << {name: name, cohort: cohort.to_sym}
+    end
   end
-  file.close
 end
 
 def try_load_students
