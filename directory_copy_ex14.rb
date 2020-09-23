@@ -98,11 +98,9 @@ def load_students(filename = "students.csv")
   if filename == ""
     filename = "students.csv"
   end
-  file = File.open(filename, "r") do |file|
-    file.readlines.each do |line|
-      name, cohort = line.chomp.split(",")
-        @students << {name: name, cohort: cohort.to_sym}
-    end
+  CSV.foreach(filename) do |line|
+    name, cohort = line
+    @students << {name: name, cohort: cohort.to_sym}
   end
 end
 
