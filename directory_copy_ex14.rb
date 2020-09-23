@@ -90,8 +90,13 @@ def show_students
 end
 
 def save_students
+  puts "Where fo you want to save your list (default file is: students.csv)"
+  filename = STDIN.gets.chomp
+  if filename == ""
+    filename = "students.csv"
+  end
   #open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(filename, "w")
   #iterate over the array of students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
@@ -102,6 +107,11 @@ def save_students
 end
 
 def load_students(filename = "students.csv")
+  puts "Your default file to load from is #{filename}. If you want to load from a different file put a new name:"
+  filename = STDIN.gets.chomp
+  if filename == ""
+    filename = "students.csv"
+  end
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(",")
