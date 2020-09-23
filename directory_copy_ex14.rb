@@ -26,15 +26,20 @@ def process(selection)
   case selection
   when "1"
     #input the students
+    puts "You've selected option nr 1 - 'Input the students'"
     students = input_students
   when "2"
     # show the students
+    puts "You've selected option nr 2 - 'Show the students'"
     show_students
   when "3"
+    puts "You've selected option nr 3 - 'Save the students'"
     save_students
   when "4"
+    puts "You've selected option nr 4 - 'Load the students from file'"
     load_students
   when "9"
+    puts "Bye"
     exit #this will cause the program to terminate
   else
     puts "I don't know what you meant, try again"
