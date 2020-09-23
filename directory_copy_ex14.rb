@@ -1,17 +1,5 @@
 
-# students = [
-#   {name: "Dr. Hannibal Lecter", cohort: :november},
-#   {name: "Darth Vader", cohort: :november},
-#   {name: "Nurse Ratched", cohort: :november},
-#   {name: "Michael Corleone", cohort: :november},
-#   {name: "Alex DeLarge", cohort: :novembe},
-#   {name: "The Wicked Witch of the West", cohort: :november},
-#   {name: "Terminator", cohort: :november},
-#   {name: "Freddy Krueger", cohort: :november},
-#   {name: "The Joker", cohort: :november},
-#   {name: "Joffrey Baratheon", cohort: :november},
-#   {name: "Norman Bates", cohort: :november}
-# ]
+require 'csv'
 @students = []
 
 def print_menu
@@ -95,13 +83,11 @@ def save_students
   if filename == ""
     filename = "students.csv"
   end
-  #open the file for writing
-  file = File.open(filename, "w") do |file|
-  #iterate over the array of students
+  CSV.open(filename, "wb") do |csv|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
-      csv_line = student_data.join(",")
-      file.puts csv_line
+      csv_line = student_data
+      csv << csv_line
     end
   end
 end
